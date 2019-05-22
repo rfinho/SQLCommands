@@ -1,0 +1,22 @@
+CREATE OR REPLACE PROCEDURE Add1(
+ A Number,
+ B Number,
+ C Number)
+ IS
+ Result Number(3);
+ BEGIN
+ Result:= A+B+C;
+ DBMS_output.put_line('Result is ' || Result);
+ END;
+
+
+CREATE OR REPLACE PROCEDURE CREATEBANKACCOUNT1(
+  name char,
+  ctype char,
+  cty char,abc char)
+  IS
+  BEGIN
+  INSERT INTO BANK VALUES((SELECT UPPER(SUBSTR(ACTYPE,1,1)) || UPPER(SUBSTR(CITY,1,1)) || LPAD(NVL(MAX(SUBSTR(ACCNO,3,3)) + 1,1),3,'0') FROM BANK WHERE SUBSTR(accno,1,1) = UPPER(SUBSTR(actype,1,1))), NAME, CITY);
+  end;
+
+
